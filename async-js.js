@@ -1,17 +1,17 @@
-let stocks = {
-  Fruits : ["strawberry", "grapes", "banana", "apple"],
-  Liquid : ["water", "ice"],
-  Holder : ["cone", "cup", "stick"],
-  Toppings : ["chocolate", "peanuts"],
+const stocks = {
+  fruits : ["Strawberry", "Grapes", "Banana", "Apple"],
+  liquid : ["Water", "ice"],
+  holder : ["Cone", "Cup", "Stick"],
+  toppings : ["chocolate", "peanuts"],
 };
 
 
+// #1 place order
+let order = (fruit_name, call_production)=>{
 
-let order = (Fruit_name, call_production)=>{
+  setTimeout(() => { // setTimeout is an asynchronous function
 
-  setTimeout(() => { // setTimeout is asynchrones function
-
-    console.log(`(3)  --> ${stocks.Fruits[Fruit_name]} ${stocks.Fruits[Fruit_name] === 1 ? "were" : "was"} selected`);
+    console.log(`(3)--> ${stocks.fruits[fruit_name]} ${stocks.fruits[fruit_name] === "Grapes" ? "were" : "was"} selected`);
 
     call_production();
 
@@ -22,23 +22,39 @@ let order = (Fruit_name, call_production)=>{
   
 };
 
-console.log("(1)Start (executes frist)");
+console.log("(1) Start (executes first)");
 
 let production = () => {
-  console.log("(4)   Order recived, starting production")
+  console.log("(4) Order received, starting production")
 
-  setTimeout(() => { // setTimeout is asynchrones function
-    console.log("(5)    Production has started")
-    showInProcessMessge();
+  setTimeout(() => { // setTimeout is an asynchronous function
+    console.log("(5) Production has started")
+    showInProcessMessage();
   }, 0);
 
+// #2 Cut the fruit 
   setTimeout(() => {
-    console.log('(7)      The fruit has been chopped')
+    console.log('(7) The fruit has been chopped');
+
+// #3 Add water and ice
+    setTimeout(() => {
+        console.log(`(8) ${stocks.liquid[0]} and ${stocks.liquid[1]} has been added`);
+
+        setTimeout(() => {
+          console.log('(9) The machine has been started');
+
+          setTimeout(() => {
+            console.log(`(10) ${stocks.holder[0]}`);
+          })
+        },1000)
+    }, 1000)
   },2000)
 
-}
-order(2, production); //select fruit(0,1,2,3)
 
-let showInProcessMessge = () => {
-  console.log('(6)     We are making your order, please wait! :)')
+  
+}
+order(1, production); //select fruit(0,1,2,3)
+
+let showInProcessMessage = () => {
+  console.log('(6) We are making your order, please wait! :)')
 }
