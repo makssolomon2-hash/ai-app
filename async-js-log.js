@@ -49,8 +49,8 @@ let production = () => {
 
                 setTimeout(()=>{
                     log('(12) Serve Ice Cream!')
-                    log(showMessage(1));
-                    log(showMessage(2));               
+                    showMessage(1);
+                    showMessage(2);               
                 },1000)
               },3000)
           },2000)
