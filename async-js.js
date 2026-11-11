@@ -1,10 +1,11 @@
-const stocks = {
+const stocks = { //add plural check?
   fruits : ["Strawberry", "Grapes", "Banana", "Apple"],
   liquid : ["Water", "ice"],
   holder : ["Cone", "Cup", "Stick"],
-  toppings : ["chocolate", "peanuts"],
+  toppings : ["Chocolate", "Peanuts"],
 };
 
+//CALLBACKS | CALLBACK HELL
 
 // #1 place order
 let order = (fruit_name, call_production)=>{
@@ -29,7 +30,7 @@ let production = () => {
 
   setTimeout(() => { // setTimeout is an asynchronous function
     console.log("(5) Production has started")
-    showInProcessMessage();
+    showMessage(0);
   }, 0);
 
 // #2 Cut the fruit 
@@ -44,8 +45,17 @@ let production = () => {
           console.log('(9) The machine has been started');
 
           setTimeout(() => {
-            console.log(`(10) ${stocks.holder[0]}`);
-          })
+            console.log(`(10) The ice cream has been placed on ${stocks.holder[0]}`);
+              setTimeout(()=>{
+                console.log(`(11) ${stocks.toppings[1]} has been added as toping`);
+
+                setTimeout(()=>{
+                    console.log('(12) Serve Ice Cream!')
+                    showMessage(1);
+                    showMessage(2);
+                },1000)
+              },3000)
+          },2000)
         },1000)
     }, 1000)
   },2000)
@@ -55,6 +65,15 @@ let production = () => {
 }
 order(1, production); //select fruit(0,1,2,3)
 
-let showInProcessMessage = () => {
-  console.log('(6) We are making your order, please wait! :)')
+const messages = [
+  '(6) We are making your order, please wait! :)','Enjoy! :)','Finish',
+]
+
+
+let showMessage = (mesage) => {
+  console.log(messages[mesage])
+  //console.log('(6) We are making your order, please wait! :)')
 }
+
+//PROMISES(better aprouch)
+
