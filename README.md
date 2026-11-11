@@ -1,3 +1,5 @@
+<img width="1920" height="1028" alt="image" src="https://github.com/user-attachments/assets/2c74fc8d-88e1-4c48-9c50-61c32c5a6cf1" />
+
 # **ASYNCHRONOUS JAVASCRIPT AND NODE SERVER**
 
 # Ice Cream Order Lab
