@@ -81,3 +81,12 @@ Do not treat these as the live page
 npm run dev runs async-js.js in Node. That is the terminal version.
 npm run dev2 runs promises.js, which imports log.js. In Node that crashes with document is not defined.
 package.json still lists "main": "server.js". That file is the old terminal demo, not the web server.
+
+to do:
+
+clear log
+debug button spam click
+
+next js
+gsap
+

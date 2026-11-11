@@ -1,13 +1,42 @@
 /* import { link } from './promises.js'; */
 
 import { stocks } from "./stocks.js";
-import { log } from "./log.js";
+import { log, hideSmallOrb, hideAllSmallOrbs} from "./log.js";
+import { mountOrb } from "./orb.js";
+
+//Show and hide orbs
+
+let stopOrb =() => {};
+
+function showOrb() {
+  document.getElementById("orb").hidden = false;
+  stopOrb();
+  stopOrb = mountOrb(document.getElementById("orb-canvas"), {
+    state: "searching",
+    size: 64,
+    dark: true,
+    speed: 0.6,
+  })
+}
+
+function hideOrb() {
+  stopOrb();
+  stopOrb = mountOrb(document.getElementById("orb-canvas"), {
+    state: "searching",
+    size: 64,
+    dark: true,
+    speed: 0,
+  })
+  /* document.getElementById("orb").hidden = true; */
+
+}
 
 //CALLBACKS | CALLBACK HELL
 
 // #1 place order
 
 function startIceCreamProgram(){
+    showOrb();
     let order = (fruit_name, call_production)=>{
 
     setTimeout(() => { // setTimeout is an asynchronous function
@@ -52,7 +81,11 @@ function startIceCreamProgram(){
                   setTimeout(()=>{
                       log('(12) Serve Ice Cream!')
                       showMessage(1);
-                      showMessage(2);               
+                      showMessage(2); 
+                      hideAllSmallOrbs()    ;        
+                      setTimeout(()=>{
+                        hideOrb(); 
+                      },3000) 
                   },1000)
                 },3000)
             },2000)
