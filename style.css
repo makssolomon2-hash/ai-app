@@ -197,9 +197,6 @@
   .m-10 {
     margin: calc(var(--spacing) * 10);
   }
-  .mx-10 {
-    margin-inline: calc(var(--spacing) * 10);
-  }
   .mx-auto {
     margin-inline: auto;
   }
@@ -211,9 +208,6 @@
   }
   .mt-10 {
     margin-top: calc(var(--spacing) * 10);
-  }
-  .mt-\[5\%\] {
-    margin-top: 5%;
   }
   .box-border {
     box-sizing: border-box;
@@ -233,26 +227,11 @@
   .h-4 {
     height: calc(var(--spacing) * 4);
   }
-  .h-\[25\%\] {
-    height: 25%;
-  }
   .h-\[80\%\] {
     height: 80%;
   }
-  .h-full {
-    height: 100%;
-  }
   .h-screen {
     height: 100vh;
-  }
-  .w-1 {
-    width: var(--spacing);
-  }
-  .w-1\.5 {
-    width: calc(var(--spacing) * 1.5);
-  }
-  .w-1\/5 {
-    width: calc(1 / 5 * 100%);
   }
   .w-4 {
     width: calc(var(--spacing) * 4);
@@ -262,9 +241,6 @@
   }
   .w-\[80\%\] {
     width: 80%;
-  }
-  .w-full {
-    width: 100%;
   }
   .border-collapse {
     border-collapse: collapse;
@@ -319,15 +295,6 @@
   .bg-\[\#3b5998\] {
     background-color: #3b5998;
   }
-  .bg-black {
-    background-color: var(--color-black);
-  }
-  .bg-slate-950 {
-    background-color: var(--color-slate-950);
-  }
-  .bg-zinc-600 {
-    background-color: var(--color-zinc-600);
-  }
   .bg-zinc-800 {
     background-color: var(--color-zinc-800);
   }
@@ -374,9 +341,6 @@
   .px-5 {
     padding-inline: calc(var(--spacing) * 5);
   }
-  .px-10 {
-    padding-inline: calc(var(--spacing) * 10);
-  }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
@@ -385,9 +349,6 @@
   }
   .py-3 {
     padding-block: calc(var(--spacing) * 3);
-  }
-  .py-10 {
-    padding-block: calc(var(--spacing) * 10);
   }
   .py-20 {
     padding-block: calc(var(--spacing) * 20);
@@ -405,10 +366,6 @@
   .text-sm {
     font-size: var(--text-sm);
     line-height: var(--tw-leading, var(--text-sm--line-height));
-  }
-  .text-xs {
-    font-size: var(--text-xs);
-    line-height: var(--tw-leading, var(--text-xs--line-height));
   }
   .leading-5 {
     --tw-leading: calc(var(--spacing) * 5);
@@ -463,22 +420,10 @@
       --tw-translate-x: 100%;
       translate: var(--tw-translate-x) var(--tw-translate-y);
     }
-    .hover\:scale-75:hover {
-      --tw-scale-x: 75%;
-      --tw-scale-y: 75%;
-      --tw-scale-z: 75%;
-      scale: var(--tw-scale-x) var(--tw-scale-y);
-    }
     .hover\:scale-101:hover {
       --tw-scale-x: 101%;
       --tw-scale-y: 101%;
       --tw-scale-z: 101%;
-      scale: var(--tw-scale-x) var(--tw-scale-y);
-    }
-    .hover\:scale-105:hover {
-      --tw-scale-x: 105%;
-      --tw-scale-y: 105%;
-      --tw-scale-z: 105%;
       scale: var(--tw-scale-x) var(--tw-scale-y);
     }
     .hover\:bg-\[\#0f1419\]\/90:hover {
