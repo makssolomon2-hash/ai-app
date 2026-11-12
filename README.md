@@ -1,4 +1,4 @@
-<img width="1920" height="1028" alt="image" src="https://github.com/user-attachments/assets/2c74fc8d-88e1-4c48-9c50-61c32c5a6cf1" />
+<img width="2560" height="1303" alt="image_2026-11-12_08-03-06" src="https://github.com/user-attachments/assets/2f218bb4-c901-4068-a915-6223a8fe548c" />
 
 # **ASYNCHRONOUS JAVASCRIPT AND NODE SERVER**
 
