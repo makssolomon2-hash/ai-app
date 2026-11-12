@@ -1,8 +1,10 @@
-<img width="1920" height="1028" alt="image" src="https://github.com/user-attachments/assets/2c74fc8d-88e1-4c48-9c50-61c32c5a6cf1" />
+<img width="2560" height="1306" alt="image" src="https://github.com/user-attachments/assets/c7466c85-74a0-4507-9b35-73fb43f44e88" />
 
-# **ASYNCHRONOUS JAVASCRIPT AND NODE SERVER**
 
-# Ice Cream Order Lab
+# AI Chat
+
+## **ASYNCHRONOUS JAVASCRIPT AND NODE SERVER**
+
 
 A small Node tutorial that places an ice cream order with callbacks, timers, and a live page.
 
