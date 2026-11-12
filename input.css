@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 *{
   box-sizing: border-box;
   
@@ -17,4 +18,13 @@ body{
   font-size: 0.95rem;
   letter-spacing: -0.02em;
   font-weight: 400;
+}
+
+.ai-input{
+  font-size: 1rem;
+  gap: 20px;
+}
+
+.input-line{
+  height: 1px;
 }
