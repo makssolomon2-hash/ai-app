@@ -1,8 +1,8 @@
 /* import { link } from './promises.js'; */
 
 import { stocks } from "./stocks.js";
-import { log, hideSmallOrb, hideAllSmallOrbs} from "./log.js";
-import { mountOrb } from "./orb.js";
+import { log, hideSmallOrb, hideAllSmallOrbs} from "../vanilla/log.js";
+import { mountOrb } from "../vanilla/orb.js";
 
 //Show and hide orbs
 
