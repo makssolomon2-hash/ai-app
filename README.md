@@ -1,4 +1,5 @@
-<img width="2560" height="1306" alt="image" src="https://github.com/user-attachments/assets/c7466c85-74a0-4507-9b35-73fb43f44e88" />
+<img width="2560" height="1304" alt="image" src="https://github.com/user-attachments/assets/80b9b3a8-157b-431b-8dde-ae2dfc3beaa7" />
+
 
 
 # AI Chat
