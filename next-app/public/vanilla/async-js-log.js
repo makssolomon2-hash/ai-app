@@ -1,0 +1,121 @@
+/* import { link } from './promises.js'; */
+
+import { stocks } from "./stocks.js";
+import { log, hideSmallOrb, hideAllSmallOrbs} from "./log.js";
+import { mountOrb } from "./orb.js";
+
+//Show and hide orbs
+
+let stopOrb =() => {};
+
+function showOrb() {
+  document.getElementById("orb").hidden = false;
+  stopOrb();
+  stopOrb = mountOrb(document.getElementById("orb-canvas"), {
+    state: "searching",
+    size: 64,
+    dark: true,
+    speed: 0.6,
+  })
+}
+
+function hideOrb() {
+  stopOrb();
+  stopOrb = mountOrb(document.getElementById("orb-canvas"), {
+    state: "searching",
+    size: 64,
+    dark: true,
+    speed: 0,
+  })
+  /* document.getElementById("orb").hidden = true; */
+
+}
+
+//CALLBACKS | CALLBACK HELL
+
+// #1 place order
+
+function startIceCreamProgram(){
+    showOrb();
+    let order = (fruit_name, call_production)=>{
+
+    setTimeout(() => { // setTimeout is an asynchronous function
+
+      log(`(3)--> ${stocks.fruits[fruit_name]} ${stocks.fruits[fruit_name] === "Grapes" ? "were" : "was"} selected`);
+
+      call_production();
+
+    },2000);
+
+    log("(2) Order placed, please call production");
+
+    
+  };
+
+  log("(1) Start (executes first)");
+
+  let production = () => {
+    log("(4) Order received, starting production")
+
+    setTimeout(() => { // setTimeout is an asynchronous function
+      log("(5) Production has started")
+      showMessage(0);
+    }, 0);
+
+  // #2 Cut the fruit 
+    setTimeout(() => {
+      log('(7) The fruit has been chopped');
+
+  // #3 Add water and ice
+      setTimeout(() => {
+          log(`(8) ${stocks.liquid[0]} and ${stocks.liquid[1]} have been added`);
+
+          setTimeout(() => {
+            log('(9) The machine has been started');
+
+            setTimeout(() => {
+              log(`(10) The ice cream has been placed on ${stocks.holder[2]}`);
+                setTimeout(()=>{
+                  log(`(11) ${stocks.toppings[1]} has been added as topping`);
+
+                  setTimeout(()=>{
+                      log('(12) Serve Ice Cream!')
+                      showMessage(1);
+                      showMessage(2); 
+                      hideAllSmallOrbs()    ;        
+                      setTimeout(()=>{
+                        hideOrb(); 
+                      },3000) 
+                  },1000)
+                },3000)
+            },2000)
+          },1000)
+      }, 1000)
+    },2000)
+
+
+    
+  }
+  order(2, production); //select fruit(0,1,2,3)
+
+  const messages = [
+    '(6) We are making your order, please wait! :)','Enjoy! :)','Finish',
+  ]
+
+
+  const showMessage = (mesage) => {
+    log(messages[mesage])
+    //console.log('(6) We are making your order, please wait! :)')
+  }
+}
+
+document.getElementById("order-btn").addEventListener("click", startIceCreamProgram);
+
+/* startIceCreamProgram(); */
+
+//PROMISES(better aprouch)
+// check /promises.js click 'link' below
+
+
+
+

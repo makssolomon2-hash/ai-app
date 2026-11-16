@@ -3,7 +3,6 @@
 //PROMISES(better aprouch)
 // check /promises.js 
 
-import { compile } from "tailwindcss";
 import { stocks } from "./stocks.js";
 let is_shop_open = false;
 
