@@ -1,17 +1,11 @@
 "use client";
 
 import { useChat } from "@ai-sdk/react";
-import { useRef, useState } from "react";
-import { ArrowUpIcon } from "lucide-react";
+import { useState } from "react";
 import type { UIMessage } from "ai";
 
+import { AiPromptInput } from "@/components/ui/ai-prompt-input";
 import { Bubble, BubbleContent } from "@/components/ui/bubble";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupTextarea,
-} from "@/components/ui/input-group";
 import { Message, MessageContent } from "@/components/ui/message";
 import {
   MessageScroller,
@@ -29,10 +23,8 @@ function textOf(message: UIMessage) {
     .join("");
 }
 
-export function AI
-() {
+export function AI() {
   const [input, setInput] = useState("");
-  const formRef = useRef<HTMLFormElement>(null);
   const { messages, sendMessage, status } = useChat();
   const busy = status === "submitted" || status === "streaming";
 
@@ -71,43 +63,18 @@ export function AI
         </MessageScroller>
       </MessageScrollerProvider>
 
-      <form
-        ref={formRef}
-        className="p-4"
-        onSubmit={(event) => {
-          event.preventDefault();
-          const text = input.trim();
-          if (!text || busy) return;
-          sendMessage({ text });
-          setInput("");
-        }}
-      >
-        <InputGroup>
-          <InputGroupTextarea
-            value={input}
-            placeholder="Ask anything..."
-            className="p-3"
-            onChange={(event) => setInput(event.target.value)}
-            onKeyDown={(event) => {
-              if (event.key === "Enter" && !event.shiftKey) {
-                event.preventDefault();
-                formRef.current?.requestSubmit();
-              }
-            }}
-          />
-          <InputGroupAddon align="block-end">
-            <InputGroupButton
-              type="submit"
-              size="icon-sm"
-              className="ml-auto rounded-full"
-              disabled={busy || input.trim().length === 0}
-              aria-label="Send"
-            >
-              <ArrowUpIcon />
-            </InputGroupButton>
-          </InputGroupAddon>
-        </InputGroup>
-      </form>
+      <div className="p-4">
+        <AiPromptInput
+          value={input}
+          onChange={setInput}
+          status={busy ? "loading" : "idle"}
+          onSubmit={(text) => {
+            if (busy) return;
+            sendMessage({ text });
+            setInput("");
+          }}
+        />
+      </div>
     </div>
   );
 }

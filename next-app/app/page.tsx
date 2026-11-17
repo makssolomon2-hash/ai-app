@@ -1,9 +1,10 @@
-import AIApp from "@/components/AIApp";
 
 export default function Home() {
   return (
     <main>
-      <AIApp />
+      <div>
+        HOME PAGE
+      </div>
     </main>
   );
 }
