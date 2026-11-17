@@ -4,7 +4,7 @@
 // check /promises.js 
 
 import { stocks } from "./stocks.js";
-let is_shop_open = false;
+let is_shop_open = true;
 
 /* console.log('Hello from promisses.js and npm run dev2!');
 console.log(stocks.fruits[3]); */
