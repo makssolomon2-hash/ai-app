@@ -1,5 +1,8 @@
 import { stocks } from "./stocks.js";
+
 let is_shop_open = true;
+let order_number = 1;
+
 
 console.log('hi');
 
@@ -12,7 +15,7 @@ let toppings_choice = ()=>{
       resolve(
         console.log('which toping would you like?')
       )  
-    },3000)
+    },5000)
   })
 };
 
@@ -51,41 +54,40 @@ async function order_2 (){
   }
 };
 
+async function  takeOrders() {
+  while (true){
+    await new Promise(resolve => setTimeout(resolve, 3000))
 
-setInterval(() =>{
-  console.log('new order!')
-  order_2()
-  .then(()=>{
-    console.log('order 1 is done')
-  })
-  .then(()=>{
-    setTimeout(()=>{
-      console.log('ready to take new order!')
-    },2000)
-  })
-},6000)
+    const currentOrder =order_number++;
+    console.log(`New order! Order number:${currentOrder}`)
 
+    try{
+      await kitchen();
+      console.log(`Order ${currentOrder} is done`);
+      console.log('Thank you, enjoy and have a nice day!');
+    } catch (error) {
+      console.error(`Order ${currentOrder} failed:`, error);
+      console.log('Please talk to our manager!');
+    } finally {
+      console.log('Ready to take a new order!');
+    }
+  }
+}
 
-
-
+takeOrders().catch(error => console.error('Order loop failed:', error));
 
 async function kitchen() {
-  
   console.log('A');
   console.log('B');
-  console.log('C');
+  console.log(' cook have to go ask customer wich toping he wants');
 
   await toppings_choice();
 
-  console.log('D');
+  console.log('cook back on kitchen');
   console.log('E');
 }
 
 
-/* kitchen(); */
-console.log('cleaning dishes');
-console.log('cleaning tables');
-console.log('taking orders');
 
 
 
