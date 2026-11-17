@@ -1,7 +1,34 @@
+import { readFileSync, writeFileSync } from 'node:fs';
 import { stocks } from "./stocks.js";
 
+
 let is_shop_open = true;
-let order_number = 1;
+
+const orderFile = new URL('./next-order-number.txt', import.meta.url);
+
+function loadOrderNumber(){
+
+  let contents;
+
+  try{
+    contents =readFileSync(orderFile, 'utf8').trim();
+  } catch(error) {
+    if (error.code === 'ENOENT') {
+      return 1;
+    }
+
+    throw error;
+  }
+
+  const number = Number(contents);
+  if (!/^[1-9]\d*$/.test(contents) || !Number.isSafeInteger(number)) {
+    throw new Error('The saved order number is invalid.');
+  }
+
+  return number;
+}
+
+let order_number = loadOrderNumber();
 
 
 console.log('hi');
@@ -42,9 +69,9 @@ order()
 
 
 //async await try catch finally structure
-async function order_2 (){
+async function example (){
   try{
-    await kitchen()
+    await functionName()
   }
   catch(error){
     console.log('error',error)
@@ -58,7 +85,16 @@ async function  takeOrders() {
   while (true){
     await new Promise(resolve => setTimeout(resolve, 3000))
 
-    const currentOrder =order_number++;
+    const currentOrder =order_number;
+    const nextOrder = currentOrder +1;
+
+    if (!Number.isSafeInteger(nextOrder)) {
+    throw new Error('Order number is too large.');
+  }
+  writeFileSync(orderFile, String(nextOrder), 'utf8');
+    order_number = nextOrder;
+
+
     console.log(`New order! Order number:${currentOrder}`)
 
     try{
