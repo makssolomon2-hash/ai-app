@@ -1,4 +1,5 @@
 'use client'
+
 import Link from "next/link";
 import id from "zod/v4/locales/id.cjs";
 
@@ -11,10 +12,11 @@ const NavBar = () => {
   const [visible, setVisible] = useState(true);
   return (
 
-    <div className="bg-black " >
+    <div className="relative min-h-16  " >
       <Button 
         onClick={() => setVisible(previous => !previous)}
         aria-expanded={visible}
+        className='absolute top-5 left-5'
       >
         {visible ? "Hide menu" : "Show menu"}
       </Button>
@@ -22,10 +24,10 @@ const NavBar = () => {
 
       {visible && (
 
-        <ul className="nav-links flex flex-row justify-between p-0 gap-0  text-2xl px-20">
+        <ul className="nav-links flex flex-row justify-between p-0 gap-0  text-xl px-30 ">
             {navLinks.map((link) =>(
                   <li key={link.name}>
-                    <Link href={link.href} className={link.id === '1' ? 'text-red-500' : link.id === '2' ? 'text-blue-500' :'text-white'} >
+                    <Link href={link.href} className={link.id === '1' ? 'text-red-500' : link.id === '2' ? 'text-blue-500' :'text-white p-0' } >
                       {link.name}
                     </Link>
                   </li>
