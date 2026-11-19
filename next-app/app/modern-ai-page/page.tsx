@@ -2,7 +2,11 @@
 import { Button } from '@/components/ui/button'
 import { tr } from 'zod/v4/locales';
 
+import Image from 'next/image';
+
 import { useRef, useState } from 'react'
+
+
 
 
   
@@ -35,43 +39,51 @@ export default function ModernAI() {
         
         >{visible ? 'Hide' : 'Show element'}</Button>
       {visible && (
-  <div
-    ref={divRef}
-    onMouseMove={handleMouseMove}
-    onMouseEnter={() => setOpacity(1)}
-    onMouseLeave={() => setOpacity(0)}
-    className="relative mt-5 w-full max-w-[700px] overflow-hidden rounded-xl bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 p-[2px]"
-  >
-    <div className="flex min-h-[180px] flex-col justify-between rounded-[10px] bg-[#101725]">
-      <input
-        className="w-full bg-transparent p-4 text-white placeholder:text-gray-400"
-        type="text"
-        placeholder="Type something..."
-      />
+          <div
+            ref={divRef}
+            onMouseMove={handleMouseMove}
+            onMouseEnter={() => setOpacity(1)}
+            onMouseLeave={() => setOpacity(0)}
+            className="relative mt-5 w-full max-w-[700px] overflow-hidden rounded-xl bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 p-[2px]"
+          >
+            <div className="flex min-h-[180px] flex-col justify-between rounded-[10px] ">
+              <input
+                className="w-full bg-transparent p-4 text-white placeholder:text-gray-200 outline-0  "
+                type="text"
+                placeholder="Type something..."
+              />
 
-      <div className="flex flex-row justify-between p-3">
-        <div>
-          <Button>Mobile App</Button>
-          <Button>Web App</Button>
-          <Button>Dashboard</Button>
-          <Button>Game</Button>
-        </div>
+              <div className="flex flex-row justify-between p-3">
+                <div className='flex gap-2'>
+                  <Button variant="outline" className="p-2 text-black">
+                    <Image src="/icons/menu.svg" alt="" width={20} height={20} />
+                    Mobile App</Button>
+                  <Button variant="outline" className="p-2 text-black">
+                    <Image src="/icons/panel.svg" alt="" width={20} height={20} />
+                    Web App</Button>
+                  <Button variant="outline" className="p-2 text-black">
+                    <Image src="/icons/database.svg" alt="" width={20} height={20} />
+                    Dashboard</Button>
+                  <Button variant="outline" className="p-2 text-black">
+                    <Image src="/icons/globe.svg" alt="" width={20} height={20} />
+                    Game</Button>
+                </div>
 
-        <Button variant="outline" className="p-2 text-black">
-          Send
-        </Button>
-      </div>
-    </div>
+                <Button variant="outline" className="flex p-2 text-black items-center justify-center text-center">
+                   <Image src="/icons/send.svg" alt="" width={20} height={20} />
+                </Button>
+              </div>
+            </div>
 
-    <div
-      className="pointer-events-none absolute inset-0 transition duration-300"
-      style={{
-        opacity,
-        background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(255,255,255,0.15), transparent 40%)`,
-      }}
-    />
-  </div>
-)}
+            <div
+              className="pointer-events-none absolute inset-0 transition duration-300"
+              style={{
+                opacity,
+                background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(255,255,255,0.15), transparent 40%)`,
+              }}
+            />
+          </div>
+        )}
         
       </section>
     </main>
