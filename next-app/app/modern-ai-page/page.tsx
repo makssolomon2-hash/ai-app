@@ -13,7 +13,7 @@ import { Background } from '@/components/Background';
   
 
 export default function ModernAI() {
-  const userName:String = 'Maks';
+  const userName:String = ['Maks', 'Vasil', 'Anatolii'];
 
   const [visible,setVisible] = useState(true);
 
@@ -44,7 +44,7 @@ export default function ModernAI() {
       <section className='relative min-h-screen flex flex-col items-center overflow-hidden px-4 pb-24 pt-40 text-center'>
 
         <div className='header'>
-          <h1 className='text-5xl font-bold mb-20'>Hi, <span className="bg-linear-to-r/oklch from-violet-500 to-cyan-400 bg-clip-text text-transparent">{userName}</span>  How can i help you today?</h1>
+          <h1 className='text-5xl font-bold mb-20'>Hi, <span className="bg-linear-to-r/oklch from-violet-500 to-cyan-400 bg-clip-text text-transparent">{userName[2]}</span>  How can i help you today?</h1>
         </div>
 
         
@@ -61,12 +61,12 @@ export default function ModernAI() {
             transition-transform duration-300 ease-out motion-reduce:transition-none rounded-xl
              ${isExpanded ? "scale-105" : "scale-100"}`}
           >
-            <div className="pointer-events-none absolute inset-[2px] rounded-[10px] bg-white" />
+            <div className="pointer-events-none absolute inset-[2px] rounded-[10px] bg-white rounded-xl" />
             <div
                 className="pointer-events-none absolute inset-0 z-10 transition duration-300"
                 style={{
                   opacity,
-                background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(24, 200, 232, 0.25), transparent 40%) `,
+                background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(24, 200, 232, 0.25), transparent 40%)  `,
                 }}
               />
            <div className={`relative z-20 w-full max-w-[700px] min-h-[180px] overflow-hidden rounded-xl flex flex-col justify-between 

@@ -7,34 +7,66 @@ import {navLinks } from "./constants/data.js";
 import { useState } from "react";
 import { Button } from "./ui/button";
 
+import Image from "next/image.js";
+
 
 const NavBar = () => {
   const [visible, setVisible] = useState(true);
   return (
 
     <div className="relative min-h-16 z-1000 bg-  " >
-      <Button 
+      {/* <div className="logo text-">LOGO</div> */}
+      
+      {/* <Button 
+        variant='outline'
         onClick={() => setVisible(previous => !previous)}
         aria-expanded={visible}
-        className='absolute top-5 left-5'
+        className='fixed top-10 left-40 z-[60] text-black'
       >
-        {visible ? "Hide menu" : "Show menu"}
+        {visible ? "Close menu" : "Open menu"}
+        
+        <Image src="/icons/menu.svg" alt="" width={20} height={20} color="# fff"className="text-white" /> 
+      </Button> */}
+      <Button 
+        variant='outline'
+        onClick={() => setVisible(previous => !previous)}
+        aria-expanded={visible}
+        className='fixed top-10 left-5 z-[60] text-black'
+      >
+        {visible ? "Close menu" : "Open menu"}
+        
+        <Image src="/icons/menu.svg" alt="" width={20} height={20} color="# fff"className="text-white" /> 
       </Button>
+
+      <aside
+        id="sidrbar"
+        hidden={!visible}
+        className="fixed inset-y-0 left-0 z-50 w-[264px] bg-[#10151F] px-5 pt-20 text-white"
+      >
+        
       {/* mapping */}
-
-      {visible && (
-
-        <ul className="nav-links flex flex-col justify-between p-0 gap-0  text-xl px-30 ">
+      <div className="text-white flex gap-3">
+        <p>Projects Navigation </p>
+          <Image src="/icons/panel.svg" alt="" width={20} height={20} color="# fff"className="text-white" />  
+      </div>
+        <nav aria-label="Main navigation">
+           <ul className=" flex flex-col  gap-4 pl-5 mt-5 ">
             {navLinks.map((link) =>(
                   <li key={link.name}>
-                    <Link href={link.href} className={link.id === '1' ? 'text-red-500' : link.id === '2' ? 'text-blue-500' :'text-white W' } >
-                      {link.name}
-                    </Link>
+                    
+                      <Button variant='link'>
+                        <Link href={link.href} className={link.id === '1' ? 'text-red-500' : link.id === '2' ? 'text-blue-500' :'text-white W' } >
+                            {link.name}
+                        </Link>
+                      </Button>
                   </li>
                 ))}
-              </ul>
-        
-      )}
+          </ul>
+        </nav>
+      </aside>
+
+
+       
   </div> 
   );
 };
