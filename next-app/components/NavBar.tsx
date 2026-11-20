@@ -11,7 +11,7 @@ import Image from "next/image.js";
 
 
 const NavBar = () => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
   return (
 
     <div className="z-1000  " >
@@ -46,8 +46,9 @@ const NavBar = () => {
       <aside
         id="sidrbar"
         hidden={!visible}
-        className="fixed inset-y-0 left-0 z-50 w-[264px] bg-[#fff] px-5 pt-12 text-white"
+        className="side-bar-animation fixed inset-y-0 left-0 z-50 w-[264px] overflow-hidden bg-white"
       >
+        <div className="w-[264px] px-5 pt-12">
         
       {/* mapping */}
 
@@ -70,6 +71,7 @@ const NavBar = () => {
                 ))}
           </ul>
         </nav>
+        </div>
       </aside>
 
 

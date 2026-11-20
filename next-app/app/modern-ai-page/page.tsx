@@ -1,11 +1,11 @@
 'use client'
 import { Button } from '@/components/ui/button'
 import { tr } from 'zod/v4/locales';
-
 import Image from 'next/image';
-
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Background } from '@/components/Background';
+import { placeholders } from '@/components/constants/data';
+
 
 
 
@@ -13,7 +13,7 @@ import { Background } from '@/components/Background';
   
 
 export default function ModernAI() {
-  const userName:String = ['Maks', 'Vasil', 'Anatolii'];
+  const userName = ['Maks', 'Vasil', 'Anatolii'];
 
   const [visible,setVisible] = useState(true);
 
@@ -23,6 +23,18 @@ export default function ModernAI() {
   const divRef = useRef<HTMLDivElement>(null)
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [opacity, setOpacity] = useState(0)
+
+  const [index, setIndex] = useState(0)
+
+  useEffect(() =>{
+    const interval = setInterval(() =>{
+      setIndex(curentIndex => (curentIndex + 1) % placeholders.length);
+
+    },8000)
+    return () => clearInterval(interval)
+  },[])
+
+
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!divRef.current) return
@@ -44,7 +56,7 @@ export default function ModernAI() {
       <section className='relative min-h-screen flex flex-col items-center overflow-hidden px-4 pb-24 pt-40 text-center'>
 
         <div className='header'>
-          <h1 className='text-5xl font-bold mb-20'>Hi, <span className="bg-linear-to-r/oklch from-violet-500 to-cyan-400 bg-clip-text text-transparent">{userName[2]}</span>  How can i help you today?</h1>
+          <h1 className='text-5xl font-bold mt-21 mb-20'>Hi, <span className="bg-linear-to-r/oklch from-violet-500 to-cyan-400 bg-clip-text text-transparent">{userName[2]}</span>  How can i help you today?</h1>
         </div>
 
         
@@ -56,7 +68,7 @@ export default function ModernAI() {
             onMouseEnter={() => setOpacity(1)}
             onMouseLeave={() => setOpacity(0)}
             
-            className={`relative mt-5 w-full max-w-[700px] 
+            className={`relative mt-15 w-full max-w-[700px] 
             bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 p-[2px]
             transition-transform duration-300 ease-out motion-reduce:transition-none rounded-xl
              ${isExpanded ? "scale-105" : "scale-100"}`}
@@ -88,12 +100,23 @@ export default function ModernAI() {
               }
             }}
             >
+              <div className="relative w-full">
               <input
                 ref={inputRef}
-                className="w-full bg-transparent p-4 text-black placeholder:text-[#10151F]/80  outline-none"
+                className="peer w-full bg-transparent p-4 text-black outline-none"
                 type="text"
-                placeholder="Type something..."
+                placeholder=" "
+                aria-label="Describe what you want to build"
               />
+
+              <span
+                key={index}
+                aria-hidden="true"
+                className="placeholder-animation pointer-events-none absolute inset-x-4 top-4 hidden truncate text-left text-[#10151F]/80 peer-placeholder-shown:block"
+              >
+                {placeholders[index]}
+              </span>
+            </div>
 
               
 
