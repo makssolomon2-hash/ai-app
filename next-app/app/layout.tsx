@@ -34,7 +34,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${inter.variable} ${sora.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="bg-black text-white min-h-full flex flex-col">
+      <body className="bg-black text-white min-h-full min-w-3xl">
         <NavBar/>
         {children}
         

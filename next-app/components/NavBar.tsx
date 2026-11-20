@@ -12,7 +12,7 @@ const NavBar = () => {
   const [visible, setVisible] = useState(true);
   return (
 
-    <div className="relative min-h-16  " >
+    <div className="relative min-h-16 z-1000 bg-  " >
       <Button 
         onClick={() => setVisible(previous => !previous)}
         aria-expanded={visible}
@@ -24,7 +24,7 @@ const NavBar = () => {
 
       {visible && (
 
-        <ul className="nav-links flex flex-row justify-between p-0 gap-0  text-xl px-30 ">
+        <ul className="nav-links flex flex-col justify-between p-0 gap-0  text-xl px-30 ">
             {navLinks.map((link) =>(
                   <li key={link.name}>
                     <Link href={link.href} className={link.id === '1' ? 'text-red-500' : link.id === '2' ? 'text-blue-500' :'text-white W' } >
