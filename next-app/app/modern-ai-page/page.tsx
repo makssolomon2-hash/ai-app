@@ -56,7 +56,7 @@ export default function ModernAI() {
       <section className='relative min-h-screen flex flex-col items-center overflow-hidden px-4 pb-24 pt-40 text-center'>
 
         <div className='header'>
-          <h1 className='text-5xl font-bold mt-21 mb-20'>Hi, <span className="bg-linear-to-r/oklch from-violet-500 to-cyan-400 bg-clip-text text-transparent">{userName[2]}</span>  How can i help you today?</h1>
+          <h1 className='text-5xl font-bold mt-21 mb-20'>Hi, <span className="bg-linear-to-r/oklch from-violet-500 to-cyan-400 bg-clip-text text-transparent">{userName[0]}</span>  How can i help you today?</h1>
         </div>
 
         

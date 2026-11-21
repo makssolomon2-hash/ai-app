@@ -1,0 +1,15 @@
+Component,Variants,Sizes,States
+Button,Primary; Secondary; Ghost; Destructive,S 36; M 44; L 52,Default; Hover; Pressed; Focus; Disabled; Loading
+Icon button,Ghost; Glass; Outline,36; 40; 44,Default; Hover; Pressed; Focus; Disabled
+Text field,Default; Search; Password,40; 44; 48,Default; Hover; Focus; Filled; Error; Disabled
+Chat composer,Hero; Compact; Voice,Hero 184 min; Compact 112 min,Empty; Focus; Filled; Uploading; Sending; Disabled; Voice
+Suggestion chip,Neutral; Accent; Selected,32 high,Default; Hover; Selected; Disabled
+Sidebar item,Primary; Nested; Recent,40; 44 high,Default; Hover; Active; Focus; Disabled
+Card,Glass; Elevated; Interactive; Insight,Auto layout,Default; Hover; Selected; Disabled
+AI orb,Hero; Compact,160; 48,Idle; Listening; Thinking; Responding; Error
+Select,Single; Multi,40; 44 high,Default; Open; Selected; Disabled; Error
+Toggle,Switch,20 control / 40 hit area,Off; On; Focus; Disabled
+Tabs,Underline; Segmented,40 high,Default; Active; Focus; Disabled
+Toast,Success; Warning; Error; Info,Auto,Visible; Dismissed
+Modal,Dialog; Bottom sheet,Max 560px,Open; Closing; Busy
+Tooltip,Standard,Auto,Hidden; Visible
