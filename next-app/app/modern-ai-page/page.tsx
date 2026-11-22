@@ -15,16 +15,16 @@ import { placeholders } from '@/components/constants/data';
 export default function ModernAI() {
   const userName = ['Maks', 'Vasil', 'Anatolii'];
 
-  const [visible,setVisible] = useState(true);
-
-  const [isExpanded, setIsExpanded] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const divRef = useRef<HTMLDivElement>(null);
+  
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [opacity, setOpacity] = useState(0);
+  const [visible,setVisible] = useState(true);
+  const [index, setIndex] = useState(0);
+  const [inChat , setInChat] = useState(false);
 
-  const divRef = useRef<HTMLDivElement>(null)
-  const [position, setPosition] = useState({ x: 0, y: 0 })
-  const [opacity, setOpacity] = useState(0)
-
-  const [index, setIndex] = useState(0)
 
   useEffect(() =>{
     const interval = setInterval(() =>{
@@ -47,20 +47,38 @@ export default function ModernAI() {
   }
 
   return (
+    
 
 
     <main className='min-h-screen bg-[#10151F] selection:bg-white/20'>
+      
       <div className="pointer-events-none absolute inset-0 blur-xl">
        <Background />
       </div>
-      <section className='relative min-h-screen flex flex-col items-center overflow-hidden px-4 pb-24 pt-40 text-center'>
-
-        <div className='header header-animation'>
-          <h1 className='text-5xl font-bold mt-21 mb-20'>Hi, <span className="bg-linear-to-r/oklch from-violet-500 to-cyan-400 bg-clip-text text-transparent">{userName[0]}</span>  How can i help you today?</h1>
-        </div>
+      
+      
+      <section className={`relative min-h-screen w-full flex flex-col items-center overflow-hidden px-4 text-center ${inChat ? "pb-0" : "pb-24"}`}>
+        {inChat ? 
+          <div className="w-[58%] bg-gray-100 rounded-2xl text-black h-[95vh] m-5  ">
+            <div className="flex flex-col justify-between">
+              <p>Chat window</p>
+              <Button onClick={() => setInChat(false)}>
+                Back
+              </Button>
+              <p>input</p>
+            </div>
+          </div> 
+          : 
+          <div className='header header-animation pt-40'>
+            <h1 className='text-5xl font-bold mt-21 mb-20'>Hi, <span className="bg-linear-to-r/oklch from-violet-500 to-cyan-400 bg-clip-text text-transparent">{userName[0]}</span>  How can i help you today?</h1>
+          </div>
+          
+          }
 
         
-      { visible&& (
+
+        
+      { visible && !inChat && (
           
           <div
             ref={divRef}
@@ -107,6 +125,11 @@ export default function ModernAI() {
                 type="text"
                 placeholder=" "
                 aria-label="Describe what you want to build"
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" && !event.nativeEvent.isComposing) {
+                    setInChat(true);
+                  }
+                }}
               />
 
               <span
@@ -136,7 +159,7 @@ export default function ModernAI() {
                     Game</Button>
                 </div>
 
-                <Button variant="outline" size='lg' className="flex p-2 min-w-5 text-black bg-[#fbfdff] items-center justify-center text-center ">
+                <Button variant="outline" size='lg' className="flex p-2 min-w-5 text-black bg-[#fbfdff] items-center justify-center text-center " onClick={() => setInChat(!inChat)}>
                    <Image src="/icons/send.svg" alt="" width={20} height={20} />
                 </Button>
               </div>
@@ -146,15 +169,23 @@ export default function ModernAI() {
           </div>
         )}
 
-        {isExpanded && <p className='mt-5'>Focus is active</p>}
+        {!inChat && visible && isExpanded && <p className="mt-5">Focus is active</p>}
 
-        <Button 
-          className='absolute bottom-20 m-5 text-black'
-          variant={'outline'}
-          onClick={() => setVisible(!visible)}
-        >
-          {visible ? 'Hide' : 'Show element'}
-        </Button>
+
+        {!inChat && 
+          <Button 
+            className='absolute bottom-20 m-5 text-black'
+            variant={'outline'}
+            onClick={() => setVisible(!visible)}
+          >
+            {visible  ? 'Hide' : 'Show element'}
+          </Button>
+        }
+        
+    
+        
+
+        
         
       </section>
     </main>
