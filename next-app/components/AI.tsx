@@ -29,7 +29,7 @@ export function AI() {
   const busy = status === "submitted" || status === "streaming";
 
   return (
-    <div className="mx-auto flex min-h-0 w-full max-w-2xl flex-1 flex-col">
+    <div className="mx-auto flex min-h-screen w-full max-w-2xl flex-end flex-col">
       <MessageScrollerProvider autoScroll>
         <MessageScroller className="min-h-0 flex-1">
           <MessageScrollerViewport>

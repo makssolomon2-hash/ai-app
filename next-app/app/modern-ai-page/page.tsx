@@ -55,12 +55,12 @@ export default function ModernAI() {
       </div>
       <section className='relative min-h-screen flex flex-col items-center overflow-hidden px-4 pb-24 pt-40 text-center'>
 
-        <div className='header'>
+        <div className='header header-animation'>
           <h1 className='text-5xl font-bold mt-21 mb-20'>Hi, <span className="bg-linear-to-r/oklch from-violet-500 to-cyan-400 bg-clip-text text-transparent">{userName[0]}</span>  How can i help you today?</h1>
         </div>
 
         
-      {visible && (
+      { visible&& (
           
           <div
             ref={divRef}
@@ -68,19 +68,19 @@ export default function ModernAI() {
             onMouseEnter={() => setOpacity(1)}
             onMouseLeave={() => setOpacity(0)}
             
-            className={`relative mt-15 w-full max-w-[700px] 
+            className={`input-animation relative mt-15 w-full max-w-[700px] 
             bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 p-[2px]
             transition-transform duration-300 ease-out motion-reduce:transition-none rounded-xl
              ${isExpanded ? "scale-105" : "scale-100"}`}
           >
             <div className="pointer-events-none absolute inset-[2px] rounded-[10px] bg-white rounded-xl" />
-            <div
+            {/* <div
                 className="pointer-events-none absolute inset-0 z-10 transition duration-300"
                 style={{
                   opacity,
-                background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(24, 200, 232, 0.25), transparent 40%)  `,
+                background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(24, 200, 232, 0.15), transparent 50%)  `,
                 }}
-              />
+              /> */}
            <div className={`relative z-20 w-full max-w-[700px] min-h-[180px] overflow-hidden rounded-xl flex flex-col justify-between 
           transition-[min-height] duration-300 ease-out motion-reduce:transition-none`}
            

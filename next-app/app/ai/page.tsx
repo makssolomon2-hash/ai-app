@@ -1,5 +1,10 @@
 import { AI} from "@/components/AI";
 
 export default function Page() {
-  return <AI />;
+  return (
+    <section className="min-h-screen flex flex-col ">
+      <AI />;
+    </section>
+  )
+  
 }
