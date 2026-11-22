@@ -1,22 +1,16 @@
 'use client'
 
 import Link from "next/link";
-import id from "zod/v4/locales/id.cjs";
-
 import {navLinks } from "./constants/data.js";
 import { useState } from "react";
 import { Button } from "./ui/button";
-
 import Image from "next/image.js";
-
 
 const NavBar = () => {
   const [visible, setVisible] = useState(false);
   return (
 
-    <div className="z-1000  " >
-      
-      
+    <div className="z-1000  " > 
       {/* <Button 
         variant='outline'
         onClick={() => setVisible(previous => !previous)}

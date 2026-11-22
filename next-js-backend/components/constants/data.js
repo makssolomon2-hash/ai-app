@@ -1,12 +1,8 @@
-export  const navLinks = [
-  {name: "Home", href: "/",   },
-  {name: "Modern", href: "/modern-ai-page",   },
-  {name: "Vanilla", href: "/vanilla/index.html" },
-  {name: "AISOLO", href: "/ai-solo", },
-  {name: "AI APP", href: "/ai" },
-  {name: "Sign in", href: "/sing-in" },
-  {name: "Sihn Up", href: "/sing-up" },
-  {name: "Settings", href: "/settings" },
+export const navLinks = [
+  { name: "Home", href: "/" },
+  { name: "Modern", href: "/modern-ai-page" },
+  { name: "Sign in", href: "/sign-in" },
+  { name: "Sign up", href: "/sign-up" },
 ];
 
 export const placeholders = [

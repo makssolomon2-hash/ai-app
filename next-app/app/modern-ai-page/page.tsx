@@ -7,11 +7,6 @@ import { Background } from '@/components/Background';
 import { placeholders } from '@/components/constants/data';
 
 
-
-
-
-  
-
 export default function ModernAI() {
   const userName = ['Maks', 'Vasil', 'Anatolii'];
 
@@ -25,7 +20,6 @@ export default function ModernAI() {
   const [index, setIndex] = useState(0);
   const [inChat , setInChat] = useState(false);
 
-
   useEffect(() =>{
     const interval = setInterval(() =>{
       setIndex(curentIndex => (curentIndex + 1) % placeholders.length);
@@ -33,8 +27,6 @@ export default function ModernAI() {
     },8000)
     return () => clearInterval(interval)
   },[])
-
-
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!divRef.current) return
@@ -47,20 +39,16 @@ export default function ModernAI() {
   }
 
   return (
-    
-
-
     <main className='min-h-screen bg-[#10151F] selection:bg-white/20'>
       
       <div className="pointer-events-none absolute inset-0 blur-xl">
        <Background />
       </div>
-      
-      
+       
       <section className={`relative min-h-screen w-full flex flex-col items-center overflow-hidden px-4 text-center ${inChat ? "pb-0" : "pb-24"}`}>
         {inChat ? 
-          <div className="w-[58%] bg-gray-100 rounded-2xl text-black h-[95vh] m-5  ">
-            <div className="flex flex-col justify-between">
+          <div className=" w-[58%] bg-gray-100 rounded-2xl text-black h-[95vh] m-5  ">
+            <div className=" flex flex-col justify-between">
               <p>Chat window</p>
               <Button onClick={() => setInChat(false)}>
                 Back
@@ -71,21 +59,15 @@ export default function ModernAI() {
           : 
           <div className='header header-animation pt-40'>
             <h1 className='text-5xl font-bold mt-21 mb-20'>Hi, <span className="bg-linear-to-r/oklch from-violet-500 to-cyan-400 bg-clip-text text-transparent">{userName[0]}</span>  How can i help you today?</h1>
-          </div>
-          
-          }
-
-        
-
-        
-      { visible && !inChat && (
-          
+          </div>  
+        }
+  
+        { visible && !inChat && (    
           <div
             ref={divRef}
             onMouseMove={handleMouseMove}
             onMouseEnter={() => setOpacity(1)}
-            onMouseLeave={() => setOpacity(0)}
-            
+            onMouseLeave={() => setOpacity(0)} 
             className={`input-animation relative mt-15 w-full max-w-[700px] 
             bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 p-[2px]
             transition-transform duration-300 ease-out motion-reduce:transition-none rounded-xl
@@ -140,11 +122,9 @@ export default function ModernAI() {
                 {placeholders[index]}
               </span>
             </div>
-
-              
-
-              <div className="flex flex-row justify-between p-3">
-                <div className='flex gap-2'>
+          
+            <div className="flex flex-row justify-between p-3">
+              <div className='flex gap-2'>
                   <Button variant="outline" className="p-2 text-black">
                     <Image src="/icons/menu.svg" alt="" width={20} height={20} />
                     Mobile App</Button>
@@ -157,20 +137,17 @@ export default function ModernAI() {
                   <Button variant="outline" className="p-2 text-black">
                     <Image src="/icons/globe.svg" alt="" width={20} height={20} />
                     Game</Button>
-                </div>
-
-                <Button variant="outline" size='lg' className="flex p-2 min-w-5 text-black bg-[#fbfdff] items-center justify-center text-center " onClick={() => setInChat(!inChat)}>
-                   <Image src="/icons/send.svg" alt="" width={20} height={20} />
-                </Button>
               </div>
-            </div>
 
-            
+              <Button variant="outline" size='lg' className="flex p-2 min-w-5 text-black bg-[#fbfdff] items-center justify-center text-center " onClick={() => setInChat(!inChat)}>
+                  <Image src="/icons/send.svg" alt="" width={20} height={20} />
+              </Button>
+              </div>
+            </div>         
           </div>
         )}
 
         {!inChat && visible && isExpanded && <p className="mt-5">Focus is active</p>}
-
 
         {!inChat && 
           <Button 
@@ -180,13 +157,7 @@ export default function ModernAI() {
           >
             {visible  ? 'Hide' : 'Show element'}
           </Button>
-        }
-        
-    
-        
-
-        
-        
+        }        
       </section>
     </main>
   )

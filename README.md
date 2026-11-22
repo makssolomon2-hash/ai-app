@@ -1,97 +1,58 @@
-<img width="2560" height="1304" alt="image" src="https://github.com/user-attachments/assets/26ae5080-6cfb-4871-ab13-cce4b4394cf4" />
+# Node.js Course Projects
 
+This repository contains three separate learning projects. Each application has
+its own dependencies and should be run from its own folder.
 
+## Projects
 
-# AI Chat
+### `vanilla/` — asynchronous JavaScript and Node.js
 
-## **ASYNCHRONOUS JAVASCRIPT AND NODE SERVER**
+A browser-based ice-cream order demo for practicing callbacks, timers,
+Promises, and async/await. The Express page server and BrowserSync support the
+live browser version; the Tailwind CLI builds the stylesheet.
 
+See [vanilla/README.md](vanilla/README.md) for setup, scripts, and file roles.
 
-A small Node tutorial that places an ice cream order with callbacks, timers, and a live page.
+### `next-app/` — Next.js experiments
 
-The order does not finish in one straight line. JavaScript starts a step, keeps going, and comes back when the timer ends. That is the whole lesson.
+A standalone Next.js app containing AI chat and composer experiments, several
+sample routes, and a chat API route. It is separate from the Gemini-backed app
+in `next-js-backend/`.
 
-```text
-(1) Start
-(2) Order placed
-      ... 2 seconds ...
-(3) Grapes were selected
-(4) Production starts
-(5) (6) please wait
-(7) chop  (8) water + ice  (9) machine
-(10) cone  (11) peanuts  (12) serve
-```
+See [next-app/README.md](next-app/README.md) for routes and setup. Its
+[design-system reference](next-app/docs/README.md) describes the intended UI,
+not a guarantee that every listed component is implemented.
 
-## Start
+### `next-js-backend/` — Gemini chat app
 
-You need [Node.js](https://nodejs.org/). Open **two** terminals in this folder.
+A separate Next.js app focused on the current AI chat experience. The home
+page and `/modern-ai-page` share the chat UI, which streams responses through
+`/api/chat` using Google Gemini. The older `/ai`, `/ai-solo`, and copied
+`/vanilla` routes/assets have been removed from this project; the remaining
+sign-in and sign-up pages are placeholders.
 
-**First time only**
+See [next-js-backend/README.md](next-js-backend/README.md) for setup and
+environment configuration. Its `docs/` folder contains the design reference
+and a guide to the current app structure.
+
+## Start a project
+
+For the browser-based JavaScript course:
 
 ```bash
+cd vanilla
 npm install
-```
-
-**Terminal 1 — the page**
-
-```bash
 npm run live
 ```
 
-Then open **[http://localhost:3001](http://localhost:3001)**
-
-Not port 3000. Port 3000 is only the server. Port 3001 is the one that reloads the browser when you save.
-
-**Terminal 2 — Tailwind**
+For either Next.js app, enter that app's folder, install its dependencies, and
+start its dev server:
 
 ```bash
-npx @tailwindcss/cli -i ./input.css -o ./style.css --watch
+cd next-js-backend
+npm install
+npm run dev
 ```
 
-Leave both terminals open. Save a file. The browser should reload by itself.
-
-Stop either one with `Ctrl+C`.
-
-## What to touch
-
-| File | Do this |
-| --- | --- |
-| [index.html](index.html) | Change the page and Tailwind classes |
-| [input.css](input.css) | Change your own CSS |
-| [async-js-log.js](async-js-log.js) | Change the order steps shown on the page |
-| [stocks.js](stocks.js) | Change fruits, liquids, holders, toppings |
-| [style.css](style.css) | **Do not edit.** Tailwind rewrites this file |
-
-## Scripts
-
-| Command | What it does |
-| --- | --- |
-| `npm run live` | Starts the page and reloads the browser on save |
-| `npm run serve` | Server only, on port 3000. You refresh the page yourself |
-| `npm run dev` | Terminal version of the order. No browser |
-| `npm run dev2` | Do not use this for the page. It crashes in Node because `document` only exists in the browser |
-
-## How the pieces connect
-
-```text
-index.html
-  ├── style.css          built from input.css
-  └── async-js-log.js
-        ├── stocks.js    the ingredients
-        └── log.js       writes each step into the page
-```
-
-`app.js` is the tiny Express server. It only serves these files. It does not make the ice cream.
-Do not treat these as the live page
-npm run dev runs async-js.js in Node. That is the terminal version.
-npm run dev2 runs promises.js, which imports log.js. In Node that crashes with document is not defined.
-package.json still lists "main": "server.js". That file is the old terminal demo, not the web server.
-
-to do:
-
-clear log
-debug button spam click
-
-next js
-gsap
-
+Use `cd next-app` instead to run the other Next.js project. Their package
+scripts, routes, and environment configuration are independent.

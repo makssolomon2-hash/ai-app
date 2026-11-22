@@ -18,16 +18,6 @@ const NavBar = () => {
     <div className="z-1000  " >
       
       
-      {/* <Button 
-        variant='outline'
-        onClick={() => setVisible(previous => !previous)}
-        aria-expanded={visible}
-        className='fixed top-10 left-40 z-[60] text-black'
-      >
-        {visible ? "Close menu" : "Open menu"}
-        
-        <Image src="/icons/menu.svg" alt="" width={20} height={20} color="# fff"className="text-white" /> 
-      </Button> */}
 
       
       <Button 

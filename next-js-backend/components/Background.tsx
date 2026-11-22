@@ -1,5 +1,3 @@
-import { cn } from "@/lib/utils";
-import { useState } from "react";
 import { GradFlow } from 'gradflow'
 
 // Want to create stunning backgrounds and play with the colors and valies check: Check out https://gradflow.meera.dev/

@@ -1,5 +1,9 @@
 # ZYRICON Design System v1.0
-A Figma-ready specification and token starter for a premium dark AI chat product.
+A Figma-ready design reference for a premium dark AI chat product.
+
+> This document is a design reference for `next-js-backend/`, not a generated
+> inventory of shipped components. See [the project README](../README.md) for
+> the current routes, setup, and implementation overview.
 
 ## 1. Product principles
 - Calm intelligence: dark, spacious, focused, never visually noisy.
@@ -150,7 +154,8 @@ Orb / Hero / Thinking
 
 Use Auto Layout for every component. Use variables for colors, spacing, radius, and typography. Create component properties for Variant, Size, State, Icon leading, Icon trailing, and Label. Set sensible min/max widths and use Fill container for responsive regions.
 
-## 8. Included files
-- `zyricon.tokens.json`: Tokens Studio-style token groups.
-- `zyricon.tokens.css`: CSS custom properties and starter component styles.
-- `README.md`: this complete specification.
+## 8. How to use this specification
+
+Use this document as a visual direction and component-planning reference.
+Check the app source before assuming a token or component described here is
+already implemented.
