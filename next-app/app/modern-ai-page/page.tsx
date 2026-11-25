@@ -1,11 +1,15 @@
 'use client'
 import { Button } from '@/components/ui/button'
-import { tr } from 'zod/v4/locales';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react'
 import { Background } from '@/components/Background';
 import { placeholders } from '@/components/constants/data';
 
+interface Message {
+  id: number;
+  text: string;
+  role: 'user' | 'assistant';
+}
 
 export default function ModernAI() {
   const userName = ['Maks', 'Vasil', 'Anatolii'];
@@ -19,6 +23,12 @@ export default function ModernAI() {
   const [visible,setVisible] = useState(true);
   const [index, setIndex] = useState(0);
   const [inChat , setInChat] = useState(false);
+
+  const [input, setInput] = useState("");
+  const [messages, setMessages] = useState<Message[]>([]);
+
+  const [userSwitch, setUserSwitch] = useState<Message['role']>('user');
+
 
   useEffect(() =>{
     const interval = setInterval(() =>{
@@ -38,6 +48,21 @@ export default function ModernAI() {
     })
   }
 
+  function sendMessage(){
+    if (!input.trim()) return;
+
+    setMessages((prev) =>[
+      ...prev,
+      {
+        id: Date.now(),
+        text: input,
+        role: userSwitch,
+      },
+    ]);
+
+    setInput("") ;
+  }
+
   return (
     <main className='min-h-screen bg-[#10151F] selection:bg-white/20'>
       
@@ -45,16 +70,88 @@ export default function ModernAI() {
        <Background />
       </div>
        
-      <section className={`relative min-h-screen w-full flex flex-col items-center overflow-hidden px-4 text-center ${inChat ? "pb-0" : "pb-24"}`}>
+      <section className={`relative min-h-screen w-full flex flex-col items-center ju overflow-hidden px-4 text-center ${inChat ? "pb-0" : "pb-0"}`}>
         {inChat ? 
-          <div className=" w-[58%] bg-gray-100 rounded-2xl text-black h-[95vh] m-5  ">
-            <div className=" flex flex-col justify-between">
-              <p>Chat window</p>
-              <Button onClick={() => setInChat(false)}>
-                Back
-              </Button>
-              <p>input</p>
-            </div>
+          <div className=" flex flex-col justify-between w-[58%] bg-gray-100 rounded-2xl text-black h-[95vh] m-5 ">
+
+              <div className="flex flex-row justify-between p-3 border-b  border-b-zinc-300">
+
+                <Button
+                    onClick={() => setInChat(false)}
+                    className=""
+                >
+                  Back
+                </Button>
+                {/*<p>Chat window</p>*/}
+                <div className="flex gap-3 font-bold items-center px-3">
+                  <div className="rounded-full bg-green-500 w-[15px] h-[15px]"></div>
+                  Gemini 3.5
+                </div>
+              </div>
+
+              <div className="down ">
+                <div className="flex flex-col justify-end text-right gap-3 m-5">
+                  {messages.map((message) => (
+                      <div
+                          key={message.id}
+                          className={`flex items-end gap-2 ${
+                              message.role === "user" ? "justify-end" : "justify-start"
+                          }`}
+                      >
+                        {message.role === "assistant" && (
+                            <Image
+                                src="/tola.png"
+                                alt="Tola"
+                                width={40}
+                                height={40}
+                                className="rounded-full object-cover h-[40px]"
+                            />
+                        )}
+
+                        <div
+                            className={`w-fit max-w-[80%] whitespace-pre-wrap break-words rounded-2xl p-3 ${
+                                message.role === "user"
+                                    ? "bg-zinc-300 text-black"
+                                    : "bg-zinc-200 text-black"
+                            }`}
+                        >
+                          {message.text}
+                        </div>
+                      </div>
+                  ))}
+                </div>
+                <div className="">
+
+                  <input
+                      ref={inputRef}
+                      value={input}
+                      className="peer w-full h-[50px] bg-zinc-200 p-4 text-black outline-black"
+                      type="text"
+                      placeholder="Ask folow up question..."
+                      aria-label="Describe what you want to build"
+                      onChange={(e) => setInput(e.target.value)}
+                      onKeyDown={(event) => {
+                        if (event.key === "Enter" && !event.nativeEvent.isComposing) {
+                          setInChat(true);
+                          sendMessage();
+                        }
+                      }}
+                  />
+                  <div className=" flex flex-row justify-between p-3 bg-zinc-200">
+                    <p></p>
+
+                    <Button
+                        onClick={() =>
+                            setUserSwitch((current) =>
+                                current === "user" ? "assistant" : "user"
+                            )
+                        }
+                    >
+                      Switch to {userSwitch === "user" ? "assistant" : "user"}
+                    </Button>
+                  </div>
+                </div>
+              </div>
           </div> 
           : 
           <div className='header header-animation pt-40'>
@@ -74,13 +171,17 @@ export default function ModernAI() {
              ${isExpanded ? "scale-105" : "scale-100"}`}
           >
             <div className="pointer-events-none absolute inset-[2px] rounded-[10px] bg-white rounded-xl" />
-            {/* <div
+
+            {/*
+              //mouse blure effect
+            <div
                 className="pointer-events-none absolute inset-0 z-10 transition duration-300"
                 style={{
                   opacity,
                 background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(24, 200, 232, 0.15), transparent 50%)  `,
                 }}
               /> */}
+
            <div className={`relative z-20 w-full max-w-[700px] min-h-[180px] overflow-hidden rounded-xl flex flex-col justify-between 
           transition-[min-height] duration-300 ease-out motion-reduce:transition-none`}
            
@@ -107,9 +208,11 @@ export default function ModernAI() {
                 type="text"
                 placeholder=" "
                 aria-label="Describe what you want to build"
+                onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(event) => {
                   if (event.key === "Enter" && !event.nativeEvent.isComposing) {
                     setInChat(true);
+                    sendMessage();
                   }
                 }}
               />
@@ -139,7 +242,10 @@ export default function ModernAI() {
                     Game</Button>
               </div>
 
-              <Button variant="outline" size='lg' className="flex p-2 min-w-5 text-black bg-[#fbfdff] items-center justify-center text-center " onClick={() => setInChat(!inChat)}>
+              <Button variant="outline" size='lg' className="flex p-2 min-w-5 text-black bg-[#fbfdff] items-center justify-center text-center " onClick={() => {
+                  setInChat(!inChat);
+                  sendMessage()
+              }}>
                   <Image src="/icons/send.svg" alt="" width={20} height={20} />
               </Button>
               </div>
