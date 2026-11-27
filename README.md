@@ -1,3 +1,5 @@
+<img width="2553" height="1302" alt="Screenshot 2026-11-27 092338" src="https://github.com/user-attachments/assets/b3a5203e-9264-4580-90f9-c442b9f98c2d" />
+<img width="2550" height="1302" alt="Screenshot 2026-11-27 092318" src="https://github.com/user-attachments/assets/272282f7-e24f-469c-9dba-4e65fa00a1bf" />
 # Node.js Course Projects
 
 This repository contains three separate learning projects. Each application has
